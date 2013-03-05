@@ -1,0 +1,50 @@
+#!/bin/sh
+# chkconfig: 2345 99 10
+# description: Starts and stops punjab, the bosh connector from apache to openfire
+#
+# processname: punjab
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+if [ -f /etc/sysconfig/punjab ]; then
+        . /etc/sysconfig/punjab
+fi
+
+pidfile=${PIDFILE-/var/run/punjab/punjab.pid}
+PUNJABHOME=/mesonet/www/apps/weather.im/punjab
+RETVAL=0
+
+start() {
+  echo -n $"Starting punjab: " 
+  cd $PUNJABHOME
+  daemon --user=nobody --pidfile=${pidfile} sh ./run.sh
+  RETVAL=$?
+  echo
+  return $RETVAL
+}
+stop(){
+  echo -n $"Stopping punjab: "
+  killproc -p ${pidfile}
+  RETVAL=$?
+  echo
+}
+
+# See how we were called.
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        stop
+        start
+        ;;
+  *)
+        echo $"Usage: punjab {start|stop|restart}"
+        RETVAL=2
+esac
+
+exit $RETVAL
