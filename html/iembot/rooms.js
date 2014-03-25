@@ -87,6 +87,7 @@ chatdata.rooms = [
  ["mflchat","Miami"],
  ["mfrchat","Medford"],
  ["mhxchat","Newport/Morehead City"],
+ ['michiganwxalerts', "Michigan Weather Alerts"],
  ["mkxchat","Milwaukee/Sullivan"],
  ["mlbchat","Melbourne"],
  ["mobchat","Mobile"],
