@@ -12,6 +12,10 @@ and services are provided without warranty.
 
 <ul>
  <li><a href="/iembot/">IEMBot Monitor</a></li>
+ <li><a href="/live/">Live Client</a>  This is an upstream version of the
+ <a href="https://nwschat.weather.gov/live/">NWSChat Live</a> client. This 
+ client interfaces with the XMPP server hosted at weather.im and open to
+ public usage.</li>
 </ul>
 
 </body>
