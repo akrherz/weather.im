@@ -7,10 +7,10 @@
 <script type="text/javascript" src="rooms.js"></script>
 <script type="text/javascript" src="soundmanager2.js"></script>
 <script>
-Ext.namespace("soundManager");
-soundManager = new SoundManager();
-soundManager.url = "swf/";
+soundManager.setup({
+	url: "swf/"});
 soundManager.consoleOnly = true;
+soundManager.debugMode = false;
 soundManager.onload = function() {
  soundManager.createSound("message_new","sounds/message_new.mp3");
 }
