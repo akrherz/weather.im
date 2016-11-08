@@ -1,9 +1,9 @@
-<html>
-<head>
- <title>weather.im, powered by Iowa Environmental Mesonet</title>
-</head>
-<body>
+<?php 
+require_once "../config/settings.inc.php";
+require_once "../include/myview.php";
 
+$t = new MyView();
+$t->content = <<<EOF
 <h3>Weather.IM</h3>
 
 <p>This website is a testbed of weather dissemination technologies powered
@@ -17,6 +17,6 @@ and services are provided without warranty.
  client interfaces with the XMPP server hosted at weather.im and open to
  public usage.</li>
 </ul>
-
-</body>
-</html>
+EOF;
+$t->render('single.phtml');
+?>
