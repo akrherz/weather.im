@@ -23,7 +23,7 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 			$config["openfire_userservice_secret"],
 			urlencode($user), urlencode($p1), urlencode($email));
 	$response = file_get_contents($url);
-	if ($response != '<result>ok</result>\n'){
+	if ($response != "<result>ok</result>\n"){
 		error_log($response);
 		break;
 	}
