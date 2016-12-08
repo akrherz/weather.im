@@ -12,7 +12,7 @@ if [ -f /etc/sysconfig/punjab ]; then
 fi
 
 pidfile=${PIDFILE-/var/run/punjab/punjab.pid}
-PUNJABHOME=/mesonet/www/apps/weather.im/punjab
+PUNJABHOME=/opt/weather.im/punjab
 RETVAL=0
 
 start() {
