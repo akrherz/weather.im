@@ -1,3 +1,8 @@
+<?php 
+
+// Set the west panel as collapsed
+$cc = isset($_GET["cc"]) ? "true": "false";
+?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="https://extjs.cachefly.net/ext-3.4.0/resources/css/ext-all.css"/>
@@ -18,8 +23,9 @@ soundManager.onload = function() {
 Ext.namespace("cfg");
 cfg.server = "iem";
 cfg.banner = "iem-header";
+cfg.config_collapsed = <?php echo $cc; ?>;
 </script>
-<script type="text/javascript" src="static.js?v=1.0.5"></script>
+<script type="text/javascript" src="static.js?v=2"></script>
 </head>
 <style type="text/css">
 .new-tab{

@@ -627,6 +627,7 @@ new Ext.Viewport({
         region      : 'west',
         width       : 200,
         collapsible : true,
+        collapsed: cfg.config_collapsed,
         margins     : '0 5 0 0',
         title       : 'Options',
         items       : [ configPanel ]
