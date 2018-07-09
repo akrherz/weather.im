@@ -3,3 +3,7 @@
 /.project
 /config/settings.inc.php
 /.vscode
+/iembot/iembot_chatlog_v*.pickle
+/iembot/iembot.pid
+/iembot/logs
+/iembot/settings.json
