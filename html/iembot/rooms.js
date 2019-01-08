@@ -165,5 +165,6 @@ chatdata.rooms = [
  ["zobchat","Cleveland"],
  ["zsechat","Seattle"],
  ["ztlchat","Atlanta"],
- ["n90", "N90 TRACON New York City"]
+ ["n90", "N90 TRACON New York City"],
+ ["potomac_tracon", "Potomac TRACON Washington DC"]
 ];
