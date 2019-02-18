@@ -4,7 +4,6 @@ require_once "../config/settings.inc.php";
 require_once "../include/myview.php";
 
 $content = null;
-do {
 if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 	// Start of new account logic!
 	$p1 = isset($_POST["p1"]) ? $_POST["p1"]: null;
@@ -17,23 +16,34 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 	if ($p1 != $p2){
 		break;
 	}
-	$url = sprintf("%s?type=add&secret=%s&username=%s".
-			"&password=%s&email=%s",
-			$config["openfire_userservice_uri"],
-			$config["openfire_userservice_secret"],
-			urlencode($user), urlencode($p1), urlencode($email));
-	$response = file_get_contents($url);
-	if ($response != "<result>ok</result>\n"){
-		error_log($response);
-		break;
-	}
+	// Construct the dict payload
+	$payload = Array(
+			"username" => $user,
+			"password" => $p1,
+			"email" => $email
+		);
+
+
+		$ch = curl_init("http://openfire:9090/plugins/restapi/v1/users");
+	$pay = json_encode($payload);
+	curl_setopt($ch, CURLOPT_POST, TRUE);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $pay);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json',
+		sprintf("Authorization: %s", $config["openfire_userservice_secret"])));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($ch);
+	curl_close($ch);
+		if ($result === FALSE){
+			$content = sprintf("User Creation failed!");
+		}
+		else {
 	$content = <<<EOF
 	<p>Congratulations, your account "$user@weather.im" has been created.
 		You can now use a XMPP client to connect to our server or directly
 	use the <a href="/live/">Live Application</a></p>
 EOF;
+		}
 }
-} while(0);
 
 $t = new MyView();
 $t->title = "Account Registration";
