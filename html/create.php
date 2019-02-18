@@ -24,7 +24,7 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 		);
 
 
-		$ch = curl_init("http://openfire:9090/plugins/restapi/v1/users");
+		$ch = curl_init("http://iem-openfire:9090/plugins/restapi/v1/users");
 	$pay = json_encode($payload);
 	curl_setopt($ch, CURLOPT_POST, TRUE);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $pay);
