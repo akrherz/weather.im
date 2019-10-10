@@ -12,7 +12,7 @@ if ($id != "") {
   $pil = substr($pid,25,6);
   $e = substr($pid,0,12);
 
-  $pgconn = pg_connect("dbname=afos host=iemdb user=nobody");
+  $pgconn = pg_connect("dbname=afos host=iemdb-afos.local user=nobody");
   $rs = pg_prepare($pgconn, "_LSELECT", "SELECT data, 
                                 entered at time zone 'UTC' as mytime, source from products
                  WHERE pil = $1 and entered between $2 and $3
