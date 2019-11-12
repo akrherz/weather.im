@@ -1,0 +1,27 @@
+sudo: required
+dist: xenial
+cache:
+  timeout: 1000
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/miniconda
+addons:
+  hosts:
+    - iemdb.local
+language: python
+env:
+  global:
+    # Prevent extraneous log messages
+    - DEBIAN_FRONTEND=noninteractive
+  matrix:
+    - PYTHON_VERSION=2.7
+    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=3.7
+before_install:
+  - git clone --depth 1 https://github.com/akrherz/ci_tooling.git .ci_tooling
+  - . .ci_tooling/postgres.sh
+install:
+  - . .ci_tooling/miniconda.sh
+
+script:
+  - sudo cat /var/log/apache2/error.log
