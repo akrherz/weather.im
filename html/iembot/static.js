@@ -1,4 +1,4 @@
-Ext.BLANK_IMAGE_URL = '/ext/resources/images/default/s.gif';
+Ext.BLANK_IMAGE_URL = '/vendor/ext/resources/images/default/s.gif';
 
 Ext.onReady(function(){
 
@@ -21,7 +21,7 @@ var saveConfig = function() {
         n = n +","+ q.getId();
     }
     cp.set("nwsbot_tabs", n);
-}
+};
 
 
 /**
@@ -56,7 +56,7 @@ var saveConfig = function() {
         var iFrame = document.getElementById('printframe');
         
         var strTemplate = '<HTML><HEAD>{0}<TITLE>{1}</TITLE></HEAD><BODY onload="{2}"><DIV {3}>{4}</DIV></BODY></HTML>';
-        var strLinkTpl = '<link rel="stylesheet" type="text/css" href="{0}"/>'
+        var strLinkTpl = '<link rel="stylesheet" type="text/css" href="{0}"/>';
         var strAttr = '';
         var strFormat;
         var strHTML;
@@ -256,10 +256,10 @@ function UTCStringToDate(dtStr, format){
 function grid2html(){
     var ds = Ext.getCmp('tabs').getActiveTab().getStore();
     var roomname = Ext.getCmp('tabs').getActiveTab().getId();
-    t = "<html><head></head><body>";
+    var t = "<html><head></head><body>";
     t += "<table cellpadding='2' cellspacing='0' border='1'><tr><th>Roomname</th><th>Date</th><th>Author</th><th>Message</th></tr>";
-    for (i=0;i<ds.getCount();i++){
-       row = ds.getAt(i);
+    for (var i=0;i<ds.getCount();i++){
+       var row = ds.getAt(i);
        t += String.format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>\r\n", row.get('roomname') || roomname, row.get("ts").format('Y/m/d g:i A'), row.get("author"), row.get("message") );
                }
     t += "</table></body></html>";
@@ -270,7 +270,7 @@ function htmlExport(){
     if (Ext.isIE6 || Ext.isIE7 || Ext.isSafari || Ext.isSafari2 || Ext.isSafari3) {
         Ext.Msg.alert('Status', 'Sorry, this tool does not work with this browser.');
     } else {
-        t = grid2html();
+        var t = grid2html();
         document.location='data:plain/html;base64,' + Base64.encode(t);
     }
 };
@@ -304,7 +304,7 @@ function addTab(tabid, tabname) {
         jsonurl = '/nwsbot-json/room/'+ tabid +'/'+ cfg.jid +'/'+ cfg.apikey;
     }
 
-    st = new Ext.data.Store({
+    var st = new Ext.data.Store({
         roomname   : tabid,
         baseParams : {seqnum:0},
         seqnum     : 0,
@@ -365,7 +365,7 @@ function addTab(tabid, tabname) {
         Ext.getCmp(self.roomname +"-status").clearStatus();
     });
 
-    gp = new Ext.grid.GridPanel({
+    var gp = new Ext.grid.GridPanel({
         reloadable: true,
         viewConfig:{
             onLoad: Ext.emptyFn,
@@ -414,8 +414,8 @@ function addTab(tabid, tabname) {
             cls: 'x-btn-text-icon',
             handler: function(){
                 ar = Ext.getCmp('tabs').getActiveTab().getSelectionModel().getSelections();
-                for (i=0;i<ar.length;i++){
-                  record = ar[i];
+                for (var i=0;i<ar.length;i++){
+                  var record = ar[i];
                   Ext.getCmp('saved').getStore().add(new Ext.data.Record({
                     roomname: Ext.getCmp('tabs').getActiveTab().getId(),
                     ts      : record.get("ts"),
