@@ -24,4 +24,4 @@ install:
   - . .ci_tooling/miniconda.sh
 
 script:
-  - sudo cat /var/log/apache2/error.log
+  - true
