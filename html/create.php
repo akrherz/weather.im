@@ -10,12 +10,10 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 	$p2 = isset($_POST["p2"]) ? $_POST["p2"]: null;
 	$user = isset($_POST["username"]) ? $_POST["username"]: null;
 	$email = isset($_POST["email"]) ? $_POST["email"]: null;
-	if ($p1 == null || $p2 == null || $user == null || $email == null){
-		break;
-	}
-	if ($p1 != $p2){
-		break;
-	}
+    if ($p1 == null || $p2 == null || $user == null || $email == null ||
+        $p1 != $p2){
+		// NOOP
+	} else {
 	// Construct the dict payload
 	$payload = Array(
 			"username" => $user,
@@ -42,7 +40,8 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa'){
 		You can now use a XMPP client to connect to our server or directly
 	use the <a href="/live/">Live Application</a></p>
 EOF;
-		}
+        }
+    }
 }
 
 $t = new MyView();
