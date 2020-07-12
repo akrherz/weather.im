@@ -6,7 +6,9 @@ Ext.namespace('chatdata');
 
 chatdata.rooms = [
  ['botstalk','All Bots Talk'],
+ ["nhcchat","National Hurricance Center (NHC)"],
  ["spcchat","Storm Prediction Center (SPC)"],
+ ["wpcchat","Weather Prediction Center (WPC)"],
  ["abqchat","Albuquerque"],
  ["abrchat","Aberdeen"],
  ["afcchat","Anchorage"],
