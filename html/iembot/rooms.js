@@ -46,7 +46,7 @@ chatdata.rooms = [
  ["epzchat","El Paso Tx/Santa Teresa"],
  ["ewxchat","Austin/San Antonio"],
  ["ffcchat","Peachtree City"],
- ["fgfchat","Eastern North Dakota"],
+ ["fgfchat","Grand Forks"],
  ["fgzchat","Flagstaff"],
  ["fsdchat","Sioux Falls"],
  ["fwdchat","Dallas/Fort Worth"],
