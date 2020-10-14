@@ -59,6 +59,7 @@ chatdata.rooms = [
  ["gspchat","Greenville/Spartanburg"],
  ["gumchat","Guam"],
  ["gyxchat","Gray"],
+ ["hawaii", "Hawaii"],
  ["hfochat","Honolulu"],
  ["hgxchat","Houston/Galveston"],
  ["hnxchat","San Joaquin Valley/Hanford"],
