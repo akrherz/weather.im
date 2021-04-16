@@ -16,7 +16,17 @@ and services are provided without warranty.
  <a href="https://nwschat.weather.gov/live/">NWSChat Live</a> client. This 
  client interfaces with the XMPP server hosted at weather.im and open to
  public usage.</li>
+ <li><a href="https://mesonet.agron.iastate.edu/projects/iembot/">IEMBot Project Page</a></li>
 </ul>
+
+<h4>News and Notes</h4>
+
+<ul>
+ <li><strong>16 April 2021</strong>: The WFO-centric chatrooms on the
+ weather.im server are all read-only due to incessant spam and bad
+ behaviour.</li>
+</ul>
+
 EOF;
 $t->render('single.phtml');
 ?>
