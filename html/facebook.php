@@ -50,7 +50,7 @@ $attachment = Array(
  'caption' => 'caption',
  'description' => 'Feature Image',
  'media' => array(array('type' => 'image',
-    'src' => "http://weather.im/images/bender.jpg",
+    'src' => "http://weather.im/img/bender.jpg",
     'href' => "http://weather.im/facebook.php")),
 );
 $action_links = array(
