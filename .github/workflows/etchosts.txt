@@ -24,4 +24,4 @@
 127.0.0.1 iemdb-isuag.local
 127.0.0.1 iemdb-portfolio.local
 127.0.0.1 iemdb-smos.local
-127.0.0.1 iem-memcached3
+127.0.0.1 iem-memcached
