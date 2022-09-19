@@ -29,4 +29,3 @@ and services are provided without warranty.
 
 EOF;
 $t->render('single.phtml');
-?>
