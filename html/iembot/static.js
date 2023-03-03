@@ -463,6 +463,7 @@ function addTab(tabid, tabname) {
     Ext.getCmp('tabs').add(gp);
     Ext.getCmp('tabs').setActiveTab(tabid);
     saveConfig();
+    taskFactory();  // update polling scheme
 }
 
 
@@ -655,18 +656,21 @@ if (tokens.length == 2){
    }
 } 
 
+function taskFactory(){
+    // Create task to run with some throttling based on usage
+    Ext.TaskMgr.stopAll();
+    const interval = 7000 + Ext.getCmp('tabs').items.length * 2000;
+    const task = {
+        run: () => {
+          Ext.getCmp('tabs').items.each( (c) => {
+            if (c.reloadable) {
+             c.getStore().reload({add:true});
+            }
+          });
+        },
+        interval
+    };
+    Ext.TaskMgr.start(task);
+}
 
-var task = {
-  run: function(){
-    Ext.getCmp('tabs').items.each( function(c){ 
-      if (c.reloadable) { 
-       c.getStore().reload({add:true});
-      } 
-    });
-  },
-  interval: 7000
-};
-Ext.TaskMgr.start(task);
-
-// End of static.js
 });
