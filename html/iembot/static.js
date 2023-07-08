@@ -448,7 +448,7 @@ Ext.onReady(function () {
             store: st,
             columns: [
                 {
-                    header: 'Timestamp', width: 100, sortable: false,
+                    header: 'Timestamp', width: 100, sortable: true,
                     dataIndex: 'ts', renderer: Ext.util.Format.dateRenderer('m/d g:i A')
                 },
                 {
