@@ -24,7 +24,7 @@ chatdata.rooms = [
  ["bmxchat","Birmingham"],
  ["boichat","Boise"],
  ["bouchat","Denver"],
- ["boxchat","Taunton"],
+ ["boxchat","Boston/Taunton"],
  ["brochat","Brownsville"],
  ["btvchat","Burlington"],
  ["bufchat","Buffalo"],
