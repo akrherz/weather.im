@@ -2,8 +2,6 @@
 # Base Python
 import json
 
-# Local Import
-from iembot import iemchatbot, webservices
 from psycopg.rows import dict_row
 
 # Twisted Bits
@@ -12,6 +10,9 @@ from twisted.enterprise import adbapi
 from twisted.internet import reactor
 from twisted.web import server
 from txyam.client import YamClient
+
+# Local Import
+from iembot import iemchatbot, webservices
 
 with open("settings.json", encoding="utf-8") as fh:
     dbconfig = json.load(fh)
