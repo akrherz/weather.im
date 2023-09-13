@@ -2,7 +2,9 @@
 # Base Python
 import json
 
-from psycopg2.extras import DictCursor
+# Local Import
+from iembot import iemchatbot, webservices
+from psycopg.rows import dict_row
 
 # Twisted Bits
 from twisted.application import internet, service
@@ -10,9 +12,6 @@ from twisted.enterprise import adbapi
 from twisted.internet import reactor
 from twisted.web import server
 from txyam.client import YamClient
-
-# Local Import
-from iembot import iemchatbot, webservices
 
 with open("settings.json", encoding="utf-8") as fh:
     dbconfig = json.load(fh)
@@ -23,14 +22,14 @@ serviceCollection = service.IServiceCollection(application)
 # This provides DictCursors!
 dbrw = dbconfig.get("databaserw")
 dbpool = adbapi.ConnectionPool(
-    "psycopg2",
+    "psycopg",
     cp_reconnect=True,
-    database=dbrw.get("openfire"),
+    dbname=dbrw.get("openfire"),
     host=dbrw.get("host"),
     password=dbrw.get("password"),
     user=dbrw.get("user"),
     gssencmode="disable",
-    cursor_factory=DictCursor,
+    row_factory=dict_row,
 )
 
 memcache_client = YamClient(
