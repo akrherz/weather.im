@@ -34,8 +34,9 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa') {
         ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
+        $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        if ($result === FALSE) {
+        if ($responseCode !== 201) {
             $content = sprintf("User Creation failed!");
         } else {
             $content = <<<EOF
