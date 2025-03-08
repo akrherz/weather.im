@@ -9,6 +9,7 @@ chatdata.rooms = [
  ["nhcchat","National Hurricane Center (NHC)"],
  ["spcchat","Storm Prediction Center (SPC)"],
  ["wpcchat","Weather Prediction Center (WPC)"],
+ ["wbcchat", "Weather Bureau Central / NWSHQ (WBC)"],
  ["abqchat","Albuquerque"],
  ["abrchat","Aberdeen"],
  ["afcchat","Anchorage"],
