@@ -8,6 +8,7 @@ chatdata.rooms = [
  ['botstalk','All Bots Talk'],
  ["nhcchat","National Hurricane Center (NHC)"],
  ["spcchat","Storm Prediction Center (SPC)"],
+ ["cpcchat","Climate Prediction Center (CPC)"],
  ["wpcchat","Weather Prediction Center (WPC)"],
  ["wbcchat", "Weather Bureau Central / NWSHQ (WBC)"],
  ["abqchat","Albuquerque"],
