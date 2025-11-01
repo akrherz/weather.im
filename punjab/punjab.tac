@@ -1,8 +1,7 @@
+from punjab.httpb import HttpbService
 from twisted.application import internet, service
 from twisted.python import syslog
 from twisted.web import resource, server, static
-
-from punjab.httpb import HttpbService
 
 syslog.startLogging(prefix="punjab", facility=syslog.syslog.LOG_LOCAL1)
 root = static.File("./html")
