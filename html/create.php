@@ -34,16 +34,19 @@ if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa') {
         ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
+        $curl_error = curl_error($ch);
         $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         if ($responseCode !== 201) {
-            $content = sprintf("User Creation failed!");
+          // Log detailed error for debugging, but do not show to user
+          error_log("Openfire user creation failed: HTTP $responseCode, CURL error: $curl_error, Response: $result, Payload: $pay");
+          $content = sprintf("User Creation failed!");
         } else {
-            $content = <<<EOF
-    <p>Congratulations, your account "$user@weather.im" has been created.
+          $content = <<<EOF
+      <p>Congratulations, your account "$user@weather.im" has been created.
         You can now use a XMPP client to connect to our server or directly
-    use the <a href="/live/">Live Application</a></p>
-EOF;
+      use the <a href="/live/">Live Application</a></p>
+    EOF;
         }
     }
 }
