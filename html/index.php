@@ -3,7 +3,7 @@ require_once "../config/settings.inc.php";
 require_once "../include/myview.php";
 
 $t = new MyView();
-$t->content = <<<EOF
+$t->content = <<<EOM
 <h3>Weather.IM</h3>
 
 <p>This website is a testbed of weather dissemination technologies powered
@@ -34,5 +34,5 @@ to <code>129.186.185.33</code>, if necessary.</li>
  behaviour.</li>
 </ul>
 
-EOF;
+EOM;
 $t->render('single.phtml');
