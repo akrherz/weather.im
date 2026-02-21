@@ -1,3 +1,35 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=64", "setuptools-scm>=8" ]
+
+[project]
+name = "weather_im"
+description = "Weather.IM Python package"
+readme = "README.md"
+keywords = [ "meteorology" ]
+license = { text = "Apache" }
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dynamic = [ "version" ]
+dependencies = [
+  "pyiem",
+]
+urls."homepage" = "https://github.com/akrherz/weather.im"
+
+[tool.setuptools]
+package-dir = { "" = "pylib" }
+packages.find.where = [ "pylib" ]
+packages.find.include = [ "weather_im*" ]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
 
 [tool.ruff]
 line-length = 79

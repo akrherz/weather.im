@@ -4,6 +4,8 @@
 /config/settings.inc.php
 /config/weather-im_secrets.inc
 /.vscode
+/.coverage
+/coverage.xml
 /iembot/iembot_chatlog_v*.pickle
 /iembot/iembot.pid
 /iembot/logs
