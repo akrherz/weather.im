@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather.IM IEMBot Webhook Configuration.</title>
+</head>
+<body>
+
+<p><a href="https://mesonet.agron.iastate.edu/projects/iembot/">IEMBot Project</a>
+&gt; Webhook Configuration</p>
+
+<h1>Hello {{ user }}</h1>
+
+    {% if flash_message %}
+    <p><strong>{{ flash_message }}</strong></p>
+    {% endif %}
+
+<p>This page allows configuration of webhooks used by IEMBot to send you
+messages based on channel subscriptions.  A webhook is a unique URL used to
+send messages from one or more subscribed channels.  This configuration is
+tied to a single Google Account.</p>
+
+<h2>Terms of Usage and API Contract</h2>
+<ul>
+    <li>This service is provided without warranty! No suing allowed!</li>
+    <li>Your webhook has 5 seconds to respond with a HTTP status 200</li>
+    <li>If something bad happens (tm), a single retry will happen 30
+        seconds later.  If that fails, the bot gives up!</li>
+</ul>
+
+<p>Currently, the bot POSTs a JSON object in the following form:
+<pre>
+{
+    "text": "Jabber Message associated with the channel",
+}
+</pre>
+</p>
+
+    <h2>Create a webhook</h2>
+
+    <p>The <strong>label</strong> is simply an alias that will hopefully help
+    you track what the perhaps cryptic URL you enter references.</p>
+
+    <form method="post">
+        <input type="hidden" name="action" value="create_webhook">
+        <label for="hook_label">Label:</label>
+        <input id="hook_label" name="hook_label" type="text" required>
+        <label for="webhook_url">Webhook URL:</label>
+        <input id="webhook_url" name="webhook_url" type="url" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Your webhooks</h2>
+
+    <ul>
+    {% for webhook in user_webhooks %}
+        <li>
+            {{ webhook.hook_label }} ({{ webhook.url }})
+            <form method="post" style="display:inline; margin-left: 1rem;">
+                <input type="hidden" name="action" value="delete_webhook">
+                <input type="hidden" name="webhook_id" value="{{ webhook.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% else %}
+        <li>No webhooks configured.</li>
+    {% endfor %}
+    </ul>
+    <h2>Here's a list of channels subscribed by webhook</h2>
+    <form method="post">
+        <input type="hidden" name="action" value="create_channel">
+        <label for="channel_hook_id">Webhook:</label>
+        <select id="channel_hook_id" name="webhook_id" required>
+            <option value="">Select a webhook</option>
+            {% for webhook in user_webhooks %}
+            <option value="{{ webhook.id }}">{{ webhook.hook_label }}</option>
+            {% endfor %}
+        </select>
+        <label for="channel_name">Channel:</label>
+        <input id="channel_name" name="channel_name" type="text" required>
+        <button type="submit">Add Channel</button>
+    </form>
+
+    <ul>
+    {% for webhook in user_webhooks %}
+        <li>
+            {{ webhook.hook_label }}:
+            {% set channels = webhook_channels.get(webhook.id, []) %}
+            {% if channels %}
+                <ul>
+                {% for channel in channels %}
+                    <li>
+                        {{ channel }}
+                        <form method="post" style="display:inline; margin-left: 1rem;">
+                            <input type="hidden" name="action" value="delete_channel">
+                            <input type="hidden" name="webhook_id" value="{{ webhook.id }}">
+                            <input type="hidden" name="channel_name" value="{{ channel }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                No channels
+            {% endif %}
+        </li>
+    {% else %}
+        <li>No channel subscriptions configured.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

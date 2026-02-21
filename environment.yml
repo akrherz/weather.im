@@ -1,0 +1,14 @@
+dependencies:
+  - coverage
+  # templating
+  - jinja2
+  # webutil
+  - paste
+  # common
+  - pyiem
+  - pytest
+  - pytest-cov
+  - pytest-runner
+  - pytest-xdist
+  # testing
+  - werkzeug
