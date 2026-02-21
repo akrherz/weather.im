@@ -1,1 +1,2 @@
 git+https://github.com/akrherz/iembot.git
+jinja2
