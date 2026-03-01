@@ -10,3 +10,4 @@
 /iembot/iembot.pid
 /iembot/logs
 /iembot/settings.json
+/html/live/**
