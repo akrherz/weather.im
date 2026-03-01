@@ -1,5 +1,7 @@
 dependencies:
   - coverage
+  # Meh
+  - iembot
   # templating
   - jinja2
   # webutil

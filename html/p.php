@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('America/Chicago');
 
 $pid = isset($_GET['pid']) ? substr($_GET['pid'], 0, 36) : "";
 

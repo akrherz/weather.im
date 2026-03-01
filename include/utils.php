@@ -21,7 +21,5 @@ function curl_get($url, array $get = array(), array $options = array())
     {
         trigger_error(curl_error($ch));
     }
-    curl_close($ch);
     return $result;
 }
-?>

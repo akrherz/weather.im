@@ -125,4 +125,3 @@ $wfos = Array(
  "UNR" => array("city" => "RAPID_CITY", "lat" => 44.07, "lon" => -103.21),
  "VEF" => array("city" => "LAS_VEGAS", "lat" => 36.04, "lon" => -115.18),
 );
-?>
