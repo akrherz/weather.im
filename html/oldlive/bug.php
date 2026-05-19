@@ -8,8 +8,14 @@
  $user = isset($_REQUEST["user"]) ? $_REQUEST["user"] : die("no user");
  
     $mail = new NWSChat_Mail();
-    $mail->setBodyHtml($data);
-    $mail->setSubject("Live Debug Log - $user");
+    // Sanitize input to prevent XSS - convert to plain text or escape HTML
+    $sanitized_data = htmlspecialchars($data, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+   $mail->setBodyHtml(nl2br($sanitized_data));
+   // Sanitize username for use in email subject to prevent header/content injection
+   $user_clean = preg_replace('/[\r\n]+/', '', $user);
+   $user_clean = preg_replace('/[^A-Za-z0-9_.@\-]/', '', $user_clean);
+   $user_clean = substr($user_clean, 0, 64);
+   $mail->setSubject("Live Debug Log - $user_clean");
     $mail->setFrom(NWSCHATADMIN);
     $mail->addTo('daryl.herzmann@noaa.gov');
     $mail->send();

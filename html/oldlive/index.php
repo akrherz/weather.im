@@ -1,8 +1,10 @@
 <?php
 require_once "../../include/props.php";
 
-$xmppresource = sprintf("WeatherIMLive_%s_%s", $_SERVER["REMOTE_ADDR"],
-        gmdate("His"));
+// Sanitize IP address to prevent information disclosure - use hashed version
+$remote_ip = $_SERVER["REMOTE_ADDR"];
+$ip_hash = substr(hash('sha256', $remote_ip), 0, 8); // First 8 chars of hash
+$xmppresource = sprintf("WeatherIMLive_%s_%s", $ip_hash, gmdate("His"));
 $appname = $config["live_appname"];
 ?><!DOCTYPE html>
 <html lang='en'>
