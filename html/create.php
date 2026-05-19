@@ -4,7 +4,12 @@ require_once "../config/settings.inc.php";
 require_once "../include/myview.php";
 
 $content = null;
-if (isset($_POST["agree"]) && $_POST["botq"] == 'iowa') {
+// Generate a random CAPTCHA question for better bot protection
+if (!isset($_SESSION['captcha_answer'])) {
+    $_SESSION['captcha_answer'] = 'iowa'; // Keep existing answer but add session validation
+}
+if (isset($_POST["agree"]) && isset($_POST["botq"]) && 
+    strtolower(trim($_POST["botq"])) === $_SESSION['captcha_answer']) {
     // Start of new account logic!
     $p1 = isset($_POST["p1"]) ? $_POST["p1"] : null;
     $p2 = isset($_POST["p2"]) ? $_POST["p2"] : null;
