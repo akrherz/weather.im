@@ -1,4 +1,3 @@
-```
 # Logs and temp files
 *.log
 *.tmp
@@ -12,7 +11,3 @@
 # Editors
 .vscode/
 .idea/
-
-# Original rules preserved
-*.log
-```

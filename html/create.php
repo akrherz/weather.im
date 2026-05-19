@@ -4,9 +4,13 @@ require_once "../config/settings.inc.php";
 require_once "../include/myview.php";
 
 $content = null;
+// Ensure session is started for CAPTCHA validation
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 // Generate a random CAPTCHA question for better bot protection
 if (!isset($_SESSION['captcha_answer'])) {
-    $_SESSION['captcha_answer'] = 'iowa'; // Keep existing answer but add session validation
+  $_SESSION['captcha_answer'] = 'iowa'; // Keep existing answer but add session validation
 }
 if (isset($_POST["agree"]) && isset($_POST["botq"]) && 
     strtolower(trim($_POST["botq"])) === $_SESSION['captcha_answer']) {
@@ -15,12 +19,27 @@ if (isset($_POST["agree"]) && isset($_POST["botq"]) &&
     $p2 = isset($_POST["p2"]) ? $_POST["p2"] : null;
     $user = isset($_POST["username"]) ? $_POST["username"] : null;
     $email = isset($_POST["email"]) ? $_POST["email"] : null;
-    if (
-        $p1 == null || $p2 == null || $user == null || $email == null ||
-        $p1 != $p2
-    ) {
-        // NOOP
-    } else {
+  // Basic input validation to avoid malformed data
+  $errors = array();
+  if ($p1 === null || $p2 === null || $user === null || $email === null) {
+    $errors[] = "All fields are required.";
+  }
+  if ($p1 !== $p2) {
+    $errors[] = "Passwords do not match.";
+  }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Invalid email address.";
+  }
+  if (!preg_match('/^[A-Za-z0-9_.-]{1,32}$/', $user)) {
+    $errors[] = "Username contains invalid characters (allowed: letters, numbers, ., _, -).";
+  }
+  if (strlen($p1) < 6) {
+    $errors[] = "Password must be at least 6 characters.";
+  }
+
+  if (count($errors) > 0) {
+    $content = "<div class=\"alert alert-danger\">" . implode("<br>", array_map('htmlspecialchars', $errors)) . "</div>";
+  } else {
         // Construct the dict payload
         $payload = array(
             "username" => $user,
