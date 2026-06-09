@@ -1,13 +1,16 @@
-# Logs and temp files
 *.log
 *.tmp
 *.swp
-
-# Environment
 .env
 .env.local
 *.env.*
-
-# Editors
 .vscode/
 .idea/
+*.pickle
+.coverage
+coverage.xml
+config/weather-im_secrets.inc
+# rsync from another repo attm
+/html/live
+/iembot/logs
+config/settings.inc.php
