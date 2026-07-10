@@ -292,10 +292,11 @@ def application(environ: dict, start_response: callable):
             except Exception as exp:
                 conn.rollback()
                 flash_message = f"Unable to process request: {exp}"
-            try:
-                reload_bot()
-            except Exception as exp:
-                flash_message += f" Unable to reload bot: {exp}"
+            else:
+                try:
+                    reload_bot()
+                except Exception as exp:
+                    flash_message += f" Unable to reload bot: {exp}"
         user_webhooks, webhook_channels = _load_user_configuration(
             conn,
             remote_user,
