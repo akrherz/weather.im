@@ -5,6 +5,7 @@ from http import HTTPStatus
 from pathlib import Path
 from urllib.parse import parse_qs
 
+import requests
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from pyiem.database import get_sqlalchemy_conn, sql_helper
 from sqlalchemy.engine import Connection
@@ -272,6 +273,12 @@ def _handle_post(
     return "Unknown action."
 
 
+def reload_bot():
+    """Signal to the running bot to reload."""
+    resp = requests.get("http://iembot:8003/reload", timeout=5)
+    resp.raise_for_status()
+
+
 def application(environ: dict, start_response: callable):
     """WSGI application entrypoint."""
     remote_user = _get_remote_user(environ)
@@ -285,6 +292,11 @@ def application(environ: dict, start_response: callable):
             except Exception as exp:
                 conn.rollback()
                 flash_message = f"Unable to process request: {exp}"
+            else:
+                try:
+                    reload_bot()
+                except Exception as exp:
+                    flash_message += f" Unable to reload bot: {exp}"
         user_webhooks, webhook_channels = _load_user_configuration(
             conn,
             remote_user,

@@ -12,5 +12,6 @@ dependencies:
   - pytest-cov
   - pytest-runner
   - pytest-xdist
+  - requests
   # testing
   - werkzeug
