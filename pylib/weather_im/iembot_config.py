@@ -275,7 +275,7 @@ def _handle_post(
 
 def reload_bot():
     """Signal to the running bot to reload."""
-    resp = requests.get("http://iembot:8003/reload", timeout=5)
+    resp = requests.get("http://iembot:9003/reload", timeout=5)
     resp.raise_for_status()
 
 
