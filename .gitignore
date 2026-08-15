@@ -14,3 +14,5 @@ config/weather-im_secrets.inc
 /html/live
 /iembot/logs
 config/settings.inc.php
+/iembot/iembot.pid
+/iembot/settings.json
