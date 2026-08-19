@@ -605,13 +605,35 @@ Ext.onReady(function () {
     });
     volumeSlider.on('changecomplete', function (self, val) {
         soundManager.setVolume('message_new', val);
+        if (soundManager.getSoundById('message_test')) {
+            soundManager.setVolume('message_test', val);
+        }
         soundManager.play('message_new');
     });
 
+    var TEST_SOUND_ID = 'message_test';
     var isTestSoundPlaying = false;
     var testSoundResetTimer = null;
+    var nextTestSoundPlaybackId = 0;
+    var activeTestSoundPlaybackId = 0;
 
-    function resetTestSoundButtonState(btn) {
+    function getOrCreateTestSound() {
+        var snd = soundManager.getSoundById(TEST_SOUND_ID);
+        if (!snd) {
+            var notificationSound = soundManager.getSoundById('message_new');
+            snd = soundManager.createSound({
+                id: TEST_SOUND_ID,
+                url: (notificationSound && notificationSound.url) ? notificationSound.url : 'sounds/message_new.mp3'
+            });
+        }
+        return snd;
+    }
+
+    function resetTestSoundButtonState(btn, playbackId) {
+        if (playbackId !== activeTestSoundPlaybackId) {
+            return;
+        }
+        activeTestSoundPlaybackId = 0;
         isTestSoundPlaying = false;
         if (testSoundResetTimer) {
             clearTimeout(testSoundResetTimer);
@@ -633,27 +655,42 @@ Ext.onReady(function () {
                 text: 'Play Test Sound',
                 listeners: {
                     click: function (btn) {
-                        if (isTestSoundPlaying) {
+                        var testSound = soundManager.getSoundById(TEST_SOUND_ID);
+                        if (isTestSoundPlaying || (testSound && testSound.playState === 1)) {
                             return;
                         }
 
+                        var playbackId = ++nextTestSoundPlaybackId;
+                        activeTestSoundPlaybackId = playbackId;
                         isTestSoundPlaying = true;
                         btn.disable();
 
-                        var snd = soundManager.getSoundById('message_new');
+                        var snd = getOrCreateTestSound();
+                        soundManager.setVolume(TEST_SOUND_ID, volumeSlider.getValue());
                         var durationMs = 1500;
                         if (snd && snd.durationEstimate > 0) {
                             durationMs = snd.durationEstimate;
                         }
 
+                        if (testSoundResetTimer) {
+                            clearTimeout(testSoundResetTimer);
+                            testSoundResetTimer = null;
+                        }
                         testSoundResetTimer = setTimeout(function () {
-                            resetTestSoundButtonState(btn);
+                            var activeSound = soundManager.getSoundById(TEST_SOUND_ID);
+                            if (activeSound && activeSound.playState === 1) {
+                                activeSound.stop();
+                            }
+                            resetTestSoundButtonState(btn, playbackId);
                         }, durationMs + 250);
 
-                        soundManager.play('message_new', {
+                        soundManager.play(TEST_SOUND_ID, {
                             multiShot: false,
                             onfinish: function () {
-                                resetTestSoundButtonState(btn);
+                                resetTestSoundButtonState(btn, playbackId);
+                            },
+                            onstop: function () {
+                                resetTestSoundButtonState(btn, playbackId);
                             }
                         });
                     }
