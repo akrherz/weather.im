@@ -25,7 +25,7 @@ cfg.server = "iem";
 cfg.banner = "iem-header";
 cfg.config_collapsed = <?php echo $cc; ?>;
 </script>
-<script type="text/javascript" src="static.js"></script>
+<script type="text/javascript" src="static.js?v=2"></script>
 </head>
 <style type="text/css">
 .new-tab{
@@ -84,7 +84,18 @@ messages with index values of:
 <p>If you plan on developing a large application against this service, please
 let <a href="https://mesonet.agron.iastate.edu/info/contacts.php">us know</a>.
 <p>&nbsp;</p>
-<p>As always, this information is provided without warranty and the possibility of removal in the future.</p>
+<p>As always, this information is provided without warranty and the
+possibility of removal in the future.</p>
+
+<p></p>
+
+<h3>Changes</h3>
+<ul>
+    <li>
+        <strong>19 Aug 2026</strong>: Fixed edge case when rapidly hitting the
+        <i>Play Text Sound</i> button.
+    </li>
+</ul>
 
 </div>
 </div>

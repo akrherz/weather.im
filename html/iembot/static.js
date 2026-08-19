@@ -608,6 +608,20 @@ Ext.onReady(function () {
         soundManager.play('message_new');
     });
 
+    var isTestSoundPlaying = false;
+    var testSoundResetTimer = null;
+
+    function resetTestSoundButtonState(btn) {
+        isTestSoundPlaying = false;
+        if (testSoundResetTimer) {
+            clearTimeout(testSoundResetTimer);
+            testSoundResetTimer = null;
+        }
+        if (btn && btn.enable) {
+            btn.enable();
+        }
+    }
+
     var configPanel = new Ext.FormPanel({
         frame: true,
         labelAlign: 'top',
@@ -618,8 +632,30 @@ Ext.onReady(function () {
             new Ext.Button({
                 text: 'Play Test Sound',
                 listeners: {
-                    click: function () {
-                        soundManager.play('message_new');
+                    click: function (btn) {
+                        if (isTestSoundPlaying) {
+                            return;
+                        }
+
+                        isTestSoundPlaying = true;
+                        btn.disable();
+
+                        var snd = soundManager.getSoundById('message_new');
+                        var durationMs = 1500;
+                        if (snd && snd.durationEstimate > 0) {
+                            durationMs = snd.durationEstimate;
+                        }
+
+                        testSoundResetTimer = setTimeout(function () {
+                            resetTestSoundButtonState(btn);
+                        }, durationMs + 250);
+
+                        soundManager.play('message_new', {
+                            multiShot: false,
+                            onfinish: function () {
+                                resetTestSoundButtonState(btn);
+                            }
+                        });
                     }
                 }
             }),
