@@ -6,7 +6,7 @@
  include("../../include/utils.php");
  $data = isset($_REQUEST["data"]) ? $_REQUEST["data"] : die("no data");
  $user = isset($_REQUEST["user"]) ? $_REQUEST["user"] : die("no user");
- 
+
     $mail = new NWSChat_Mail();
     // Sanitize input to prevent XSS - convert to plain text or escape HTML
     $sanitized_data = htmlspecialchars($data, ENT_QUOTES | ENT_HTML5, 'UTF-8');

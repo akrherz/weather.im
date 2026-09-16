@@ -64,14 +64,14 @@ var LinkInterceptor = {
         p.body.on({
                     'mousedown' : function(e, t) { // try to intercept the easy
                         // way
-                    
+
                         t.target = '_blank';
                         Application.TextWindow.hide();
                     },
                     'click' : function(e, t) { // if they tab + enter a link,
                         // need to do it old fashioned
                         // way
-            
+
                         if (String(t.target).toLowerCase() != '_blank') {
                             e.stopEvent();
                             window.open(t.href);
@@ -93,4 +93,3 @@ function chatRenderer(value, p, record) {
     return msgFormatter.apply(record.data);
 }
 */
-

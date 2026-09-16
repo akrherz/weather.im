@@ -5,7 +5,7 @@ Application.MUCRoomUsers = Ext.extend(Ext.tree.TreePanel, {
     title : '0 people in room',
     rootVisible : false,
     lines : false,
-    autoScroll : true, 
+    autoScroll : true,
     initComponent : function() {
         this.root = {
             text : 'test',
@@ -38,7 +38,7 @@ Application.MUCRoomUsers = Ext.extend(Ext.tree.TreePanel, {
                     var jid = n.attributes.jid;
                     if (Strophe.getDomainFromJid(n.attributes.jid) == Application.XMPPHOST) {
                         jid = Strophe.getBareJidFromJid(n.attributes.jid);
-                    } 
+                    }
                     Application.log("Wish to start chat with:"+ jid);
                     cp = Ext.getCmp("chatpanel").getChat( jid );
                     if (! cp){

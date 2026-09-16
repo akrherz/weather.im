@@ -31,7 +31,7 @@ Ext.ux.panel.DDTabPanel = Ext.extend(Ext.TabPanel, {
         this.addEvents('reorder');
         if (!this.ddGroupId) this.ddGroupId = 'dd-tabpanel-group-' + Ext.ux.panel.DDTabPanel.superclass.getId.call(this);
     },
-    
+
     // New Event fired after drop tab
     reorder:function(tab){
         this.fireEvent('reorder', this, tab);
@@ -223,14 +223,14 @@ Ext.ux.panel.DDTabPanel.DropTarget = Ext.extend(Ext.dd.DropTarget, {
                 break;
             }
         }
-        
+
         if(typeof left == 'undefined'){
             var lastTab = tabs.itemAt(last - 1);
             if(lastTab == dd.dropEl)return 'x-dd-drop-nodrop';
             var dom = lastTab.ds.dropElHeader.dom;
             left = (new Ext.Element(dom).getX() + dom.clientWidth) + 3;
         }
-        
+
         else if(tab == dd.dropEl || prevTab == dd.dropEl){
             this.tabpanel.arrow.hide();
             return 'x-dd-drop-nodrop';
@@ -243,7 +243,7 @@ Ext.ux.panel.DDTabPanel.DropTarget = Ext.extend(Ext.dd.DropTarget, {
 
     ,notifyDrop: function(dd, e, data){
         this.tabpanel.arrow.hide();
-        
+
         // no parent into child
         if(dd.dropEl == this.tabpanel){
             return false;
@@ -266,7 +266,7 @@ Ext.ux.panel.DDTabPanel.DropTarget = Ext.extend(Ext.dd.DropTarget, {
         if(tab == dd.dropEl || tabs.itemAt(i-1) == dd.dropEl){
             return false;
         }
-        
+
     dd.proxy.hide();
 
         // if tab stays in the same tabPanel
@@ -276,13 +276,13 @@ Ext.ux.panel.DDTabPanel.DropTarget = Ext.extend(Ext.dd.DropTarget, {
 
         this.tabpanel.move = true;
         var dropEl = dd.dropEl.ownerCt.remove(dd.dropEl, false);
-        
+
         this.tabpanel.insert(i, dropEl);
         // Event drop
         this.tabpanel.fireEvent('drop', this.tabpanel);
         // Fire event reorder
         this.tabpanel.reorder(tabs.itemAt(i));
-        
+
         return true;
     }
 

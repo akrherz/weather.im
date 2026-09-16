@@ -13,7 +13,7 @@ jobs:
     defaults:
       run:
         # Ensures environment gets sourced right
-        shell: bash -l {0}  
+        shell: bash -l {0}
     strategy:
       matrix:
         PYTHON_VERSION: ["3.14"]

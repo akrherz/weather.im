@@ -1,7 +1,7 @@
 <html>
 <head>
 </head>
-<body> 
+<body>
 <h3>NWSChat Live</h3>
 <p>Hopefully, your web browser just offered to save your credentials...</p>
 

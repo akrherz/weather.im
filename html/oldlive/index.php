@@ -47,10 +47,10 @@ Due to spammers, you need to register for an account <a href="/create.php">here<
 <div id="loginmessage" class="x-hide-display">
 Welcome to <?php echo $appname; ?>, please log in with your user account.
 <br /><a href="/pwupdate.php">Forgot your password?</a>
-<?php if(isset($_REQUEST["nomap"])){ 
-  echo "<br />Switch to <a href='?'>Weather.IM Live with Map</a>";    
+<?php if(isset($_REQUEST["nomap"])){
+  echo "<br />Switch to <a href='?'>Weather.IM Live with Map</a>";
 } else {
-  echo "<br />Switch to <a href='?nomap'>Weather.IM Live without Map</a>";        
+  echo "<br />Switch to <a href='?nomap'>Weather.IM Live without Map</a>";
 } ?>
 </div>
 
@@ -59,23 +59,23 @@ Welcome to <?php echo $appname; ?>, please log in with your user account.
 
 <p><h4>Most Recent Changes</h4>
 <ul>
- <li>12 Jun 2014: Fix bug where warnings and local storm reports were not 
+ <li>12 Jun 2014: Fix bug where warnings and local storm reports were not
  clickable on the map.</li>
  <li>25 Feb 2014: Improve stability</li>
 </ul>
 
-<p style="margin-top: 5px;">"<?php echo $appname; ?>" is a pure web browser instant messaging client 
-for NWSChat.  The purpose of the application is to provide users 
+<p style="margin-top: 5px;">"<?php echo $appname; ?>" is a pure web browser instant messaging client
+for NWSChat.  The purpose of the application is to provide users
 with a painless means to join the NWSChat conversation without
 installing third party software or worrying about local network
-firewalls.  Since this application runs purely over HTTPS 
-(port 443) and without third party browser plugins, almost all users 
+firewalls.  Since this application runs purely over HTTPS
+(port 443) and without third party browser plugins, almost all users
 should be able to run this application without local modifications.
 The only requirement is for a modern web browser that supports
 javascript.</p>
 
-<p style="margin-top: 5px;">This application is under rapid development 
-and may contain bugs.  Please report bugs and suggestions to 
+<p style="margin-top: 5px;">This application is under rapid development
+and may contain bugs.  Please report bugs and suggestions to
 <a target="_new" href="mailto:<?php echo $config["nwschatadmin"]; ?>"><?php echo $config["nwschatadmin"]; ?></a>.
 Please be sure to mention the version and brand of web browser
 you use.</p>
@@ -158,16 +158,16 @@ Strophe.log = function(level, msg){
  Application.LOGIN_OPT_USER = <?php echo $config["live_login_opt_user"]; ?>;
  Application.LOGIN_OPT_ANONYMOUS = <?php echo $config["live_login_opt_anonymous"]; ?>;
  Application.LOGIN_OPT_REGISTER = <?php echo $config["live_login_opt_register"]; ?>;
- 
+
  soundManager.url = "swf/";
  soundManager.consoleOnly = true;
  soundManager.debugMode = false;
  /* Try HTML5 Audio first? */
  soundManager.preferFlash = false;
  soundManager.onload = function() {
-     Application.log("SoundManager2 Loaded...");    
+     Application.log("SoundManager2 Loaded...");
  };
- 
+
  Ext.onReady(function(){
 
     Ext.EventManager.on(window, 'beforeunload', function() {
@@ -175,7 +175,7 @@ Strophe.log = function(level, msg){
             Application.XMPPConn.flush();
             Application.XMPPConn.disconnect();
         }
-    });     
+    });
      Ext.QuickTips.init();
      (new Application.LiveViewport({
          renderTo : Ext.getBody(),

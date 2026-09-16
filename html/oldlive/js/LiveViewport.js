@@ -67,6 +67,6 @@ Application.LiveViewport = Ext.extend(Ext.Viewport, {
             closable : false,
             title : 'Weather.IM Live Login Options',
             items : [new Application.TabLoginPanel()]
-        })).show(); 
+        })).show();
     }
 });

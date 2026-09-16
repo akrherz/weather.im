@@ -258,7 +258,7 @@ var qpf1 = new OpenLayers.Layer.Vector("Day 1 QPF", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=0",
         format: new OpenLayers.Format.KML({
-            extractStyles: true, 
+            extractStyles: true,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -274,7 +274,7 @@ var qpf2 = new OpenLayers.Layer.Vector("Day 2 QPF", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=1",
         format: new OpenLayers.Format.KML({
-            extractStyles: true, 
+            extractStyles: true,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -291,7 +291,7 @@ var spc1 = new OpenLayers.Layer.Vector("Day 1 Convective Outlook", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=3",
         format: new OpenLayers.Format.KML({
-            extractStyles: false, 
+            extractStyles: false,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -308,7 +308,7 @@ var spc2 = new OpenLayers.Layer.Vector("Day 2 Convective Outlook", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=4",
         format: new OpenLayers.Format.KML({
-            extractStyles: false, 
+            extractStyles: false,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -325,7 +325,7 @@ var spc3 = new OpenLayers.Layer.Vector("Day 3 Convective Outlook", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=5",
         format: new OpenLayers.Format.KML({
-            extractStyles: false, 
+            extractStyles: false,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -341,7 +341,7 @@ var qpf15 = new OpenLayers.Layer.Vector("Day 1-5 QPF", {
     protocol: new OpenLayers.Protocol.HTTP({
         url: "data-proxy.php?id=2",
         format: new OpenLayers.Format.KML({
-            extractStyles: true, 
+            extractStyles: true,
             extractAttributes: true,
             maxDepth: 2
         })
@@ -427,10 +427,10 @@ Application.LSRGrid = Ext.extend(Ext.Window, {
                             singleSelect:true,
                             listeners : {
                                 rowselect : function(sm, rowIdx, record){
-                                    lonlat = new OpenLayers.LonLat(record.data.feature.geometry.x, 
+                                    lonlat = new OpenLayers.LonLat(record.data.feature.geometry.x,
                                     record.data.feature.geometry.y);
                                     Ext.getCmp("map").map.panTo(lonlat, 5);
-                                    
+
                                 }
                             }
                         }),
@@ -498,7 +498,7 @@ Application.SBWGrid = Ext.extend(Ext.Window, {
                 Application.SBWGrid.superclass.initComponent.apply(this, arguments);
             }
 });
-        
+
 sbws.events.on({
             featureselected : function(e) {
                 // Can't get valid as an object :(
@@ -1132,7 +1132,7 @@ layerRoot.appendChild(new GeoExt.tree.LayerContainer({
             expanded : true
         }));
 /*
- * 
+ *
  */
 Application.LayerSlider = {
     'xtype' : 'gx_opacityslider',
@@ -1283,4 +1283,3 @@ Application.MapPanel = {
                 }
             }, '-', 'Opacity', Application.LayerSlider]
 };
-

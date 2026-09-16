@@ -47,7 +47,7 @@ function buildXMPP(){
 }
 
 /*
- * Called when we wish to login! 
+ * Called when we wish to login!
  */
 Application.login = function(username, password) {
     jid = username + "@" + Application.XMPPHOST + "/"+ Application.XMPPRESOURCE;
@@ -348,7 +348,7 @@ function parseBookmarks(msg) {
              */
             Application.log("Autojoining MUC: "+ jid);
             (function() {
-                Application.MsgBus.fireEvent('joinchat', this.jid, this.nick, 
+                Application.MsgBus.fireEvent('joinchat', this.jid, this.nick,
                         this.anonymous);
             }).defer(5000*autoJoinedRooms, {
                 jid : jid,
@@ -627,7 +627,7 @@ function onMessage(msg) {
 Application.replaceURLWithHTMLLinks = function(text) {
     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     if (text == null) return null;
-    return text.replace(exp,"<a href='$1'>$1</a>"); 
+    return text.replace(exp,"<a href='$1'>$1</a>");
 };
 
 function messageParser(msg) {
@@ -641,10 +641,10 @@ function messageParser(msg) {
     var txt = "";
     var isDelayed = false;
     var stamp;
-    
+
     /*
      * We need to simplify the message into something that
-     * will display pretty. 
+     * will display pretty.
      */
     if (html.length > 0) {
                 var v = $(msg).find('html').find('body');
@@ -665,7 +665,7 @@ function messageParser(msg) {
     } else {
         stamp = new Date();
     }
-    
+
     if (type == "groupchat") {
         /* Look to see if a product_id is embedded */
         product_id = null;

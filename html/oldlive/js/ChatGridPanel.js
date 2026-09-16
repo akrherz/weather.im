@@ -4,12 +4,12 @@ Application.msgFormatter = new Ext.XTemplate(
         '<p class="mymessage">',
         '<span ',
         '<tpl if="values.me == values.author">', 'class="author-me"', "</tpl>",
-        '<tpl if="values.me != values.author">', 
+        '<tpl if="values.me != values.author">',
           'class="{[this.getAuthorClass(values.jid)]}" style="color: #{[Application.getUserColor(values.author)]};"',
         '</tpl>',
           '>(', '<tpl if="this.isNotToday(ts)">', '{ts:date("d M")} ', '</tpl>',
-        '{ts:date("g:i A")}) ', 
-        '<tpl if="values.room != null">', 
+        '{ts:date("g:i A")}) ',
+        '<tpl if="values.room != null">',
           '[{room}] ',
         '</tpl>',
         '{author}:</span> ', '{message}</p>', {
@@ -200,7 +200,7 @@ Application.ChatGridPanel = Ext.extend(Ext.grid.GridPanel, {
                     this.constructor.prototype.onAdd.apply(this, arguments);
                     //this.grid.getSelectionModel().selectRow(index);
                     //this.focusRow(index);
-                    
+
                     row = this.grid.getView().getRow(index);
                     if (row) row.scrollIntoView();
                 },

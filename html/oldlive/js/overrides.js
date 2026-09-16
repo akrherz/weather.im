@@ -69,7 +69,7 @@ if (!Array.prototype.forEach)
   };
 }
 
-/* 
+/*
  * Need to be able to have filters that can be reapplied
  * http://www.sencha.com/forum/showthread.php?76029-DISCUSS-Persistent-store-filter
  * REMOVED, could not get to work, add store event would cause race with panel, sigh
@@ -120,7 +120,7 @@ Ext.override(Ext.Element, {
     printTitle : document.title,
     /**
      * Prints this element.
-     * 
+     *
      * @param config
      *            {object} (optional)
      */

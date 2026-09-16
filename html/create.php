@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['captcha_answer'])) {
   $_SESSION['captcha_answer'] = 'iowa'; // Keep existing answer but add session validation
 }
-if (isset($_POST["agree"]) && isset($_POST["botq"]) && 
+if (isset($_POST["agree"]) && isset($_POST["botq"]) &&
     strtolower(trim($_POST["botq"])) === $_SESSION['captcha_answer']) {
     // Start of new account logic!
     $p1 = isset($_POST["p1"]) ? $_POST["p1"] : null;
@@ -93,7 +93,7 @@ like that.</p>
     Weather.IM Project
     </label>
   </div>
- 
+
   <div class="form-group">
     <label for="inputusername">Username</label>
     <input name="username" type="text" class="form-control" id="inputusername" placeholder="Username, no spaces, no @">
@@ -115,8 +115,8 @@ like that.</p>
     <input name="botq" type="text" class="form-control" id="botq" placeholder="type iowa">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
-        
-        
+
+
 </form>
 
 EOF;

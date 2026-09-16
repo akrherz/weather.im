@@ -105,7 +105,7 @@ Application.MUCChatPanel = Ext.extend(Ext.Panel, {
             this.gp.store.filterBy(iembotFilter);
         }
 
-        
+
     }
 });
 

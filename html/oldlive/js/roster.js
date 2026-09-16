@@ -15,14 +15,14 @@ function onBuddyPresence(msg) {
     var resource = Strophe.getResourceFromJid(jid);
     var username = Strophe.getNodeFromJid(jid);
     var status = 'Available';
-    /* IMPORTANT: If we find our own username, then we need to set a global 
+    /* IMPORTANT: If we find our own username, then we need to set a global
      * flag to prevent auto-login from working
      */
-    if (username == Application.USERNAME && 
-        resource != Application.XMPPRESOURCE && 
+    if (username == Application.USERNAME &&
+        resource != Application.XMPPRESOURCE &&
         resource.match(/^WeatherIM/)){
         if (msg.getAttribute('type') == 'unavailable'){
-            Application.log("Self presence: ["+ username +"] ["+ resource +"] unavailable");            
+            Application.log("Self presence: ["+ username +"] ["+ resource +"] unavailable");
         } else {
             Application.log("Self presence: ["+ username +"] ["+ resource +"] available");
         }
@@ -34,7 +34,7 @@ function onBuddyPresence(msg) {
     /* Check for subscription request */
     if (msg.getAttribute('type') == 'subscribe'){
         Ext.Msg.show({
-            
+
                title:'New Buddy Request',
                msg: 'User '+ username +' wishes to add you as a buddy. Is this okay?',
                buttons: Ext.Msg.YESNO,
@@ -46,19 +46,19 @@ function onBuddyPresence(msg) {
                      Application.buildAddBuddy(username, username ,'Buddies');
                  }  else {
                      var stanza = $pres({to: jid, type: 'unsubscribed'});
-                     Application.XMPPConn.send(stanza.tree()); 
+                     Application.XMPPConn.send(stanza.tree());
                  }
                },
                icon: Ext.MessageBox.QUESTION
             });
-        
+
         return;
     }
 
     // Go look for our barejid
     Ext.getCmp("buddies").root.eachChild(function(node) {
         node.eachChild(function(leaf){
-            //console.log("Looking for:"+ barejid +", this node:"+ 
+            //console.log("Looking for:"+ barejid +", this node:"+
             //    leaf.attributes.jid);
                 if (leaf.attributes.barejid == barejid) {
                     res = leaf.attributes.resources.get(resource);
