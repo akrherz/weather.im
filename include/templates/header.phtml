@@ -1,19 +1,19 @@
-<?php 
+<?php
 $title = array_key_exists('title', $this->vars)? 'Weather.IM :: '. $this->title : 'Weather.IM';
 $refresh = array_key_exists('refresh', $this->vars)? $this->refresh : '';
 $headextra = array_key_exists('headextra', $this->vars)? $this->headextra : '';
 $bodyextra = array_key_exists('bodyextra', $this->vars)? ' '. $this->bodyextra : '';
-$twimage = array_key_exists('twitter_image', $this->vars) ? 
+$twimage = array_key_exists('twitter_image', $this->vars) ?
                 $this->twitter_image : 'https://mesonet.agron.iastate.edu/images/logo_small.png';
-$twdescription = array_key_exists('twitter_description', $this->vars) ? 
+$twdescription = array_key_exists('twitter_description', $this->vars) ?
                 $this->twitter_description : 'Weather.IM';
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php 
-    echo $refresh; 
-    echo $headextra; 
+    <?php
+    echo $refresh;
+    echo $headextra;
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

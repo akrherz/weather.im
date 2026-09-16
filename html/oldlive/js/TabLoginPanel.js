@@ -1,4 +1,4 @@
-// 
+//
 //
 Ext.namespace("Application");
 

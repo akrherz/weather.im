@@ -11,7 +11,7 @@ Application.updateColors = function() {
                bgcolor +', fgcolor:'+ fgcolor);
     Ext.getCmp("chatpanel").items.each(function(p) {
                 if (p.te) {
-                    
+
                     p.te.items.get(0).getEl().applyStyles({
                                 background : '#' + bgcolor,
                                 color : '#' + fgcolor
@@ -19,14 +19,14 @@ Application.updateColors = function() {
                 }
             });
     /*
-    Ext.util.CSS.updateRule('.me', 'color', 
+    Ext.util.CSS.updateRule('.me', 'color',
             '#'+ Application.getPreference("handle_fgcolor", "000000"));
-    Ext.util.CSS.updateRule('.me', 'background', 
+    Ext.util.CSS.updateRule('.me', 'background',
             '#'+ Application.getPreference("handle_bgcolor", "FFFFFF"));
             */
 };
 
-/* 
+/*
  * Sync application Preferences upstream!
  */
 Application.syncPreferences = function(){
@@ -133,7 +133,7 @@ Application.playSound = function(sidx) {
     if (!soundManager || ! soundManager.ok() || soundManager.playState == 1) {
         return;
     }
-    
+
     var snd = soundManager.getSoundById(sidx);
     if (!snd) {
         idx = Application.SoundStore.find('id', sidx);
@@ -213,7 +213,7 @@ Application.MsgBus.on('joinchat', function(room, handle, anonymous) {
             }
             mcp = Ext.getCmp("chatpanel").getMUC(room);
             if (mcp == null) {
-                
+
                 Application.log("Creating chatroom:" + room);
                 mcp = Ext.getCmp("chatpanel").addMUC(room, handle, anonymous);
                 // Ext.getCmp("chatpanel").setActiveTab(mcp);

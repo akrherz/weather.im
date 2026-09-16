@@ -14,7 +14,7 @@ Application.DebugWindow = Ext.extend(Ext.Window, {
             + "<p>User-agent header: " + navigator.userAgent + "</p>",
             autoScroll : true
         }];
-    
+
         this.tbar = [{
             text : 'Click to send this log to developer!',
             icon : 'icons/print.png',
@@ -42,8 +42,8 @@ Application.DebugWindow = Ext.extend(Ext.Window, {
                 this.items.items[0].update("");
             },
             scope: this
-        }];    
-        
+        }];
+
         var config = {
                 width : 600,
                 height : 300,

@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "../config/settings.inc.php";
 require_once "../include/myview.php";
 
@@ -13,7 +13,7 @@ and services are provided without warranty.<p>
 <ul>
  <li><a href="/iembot/">IEMBot Monitor</a></li>
  <li><a href="/live/">Live Client</a>  This is an upstream version of the
- NWSChat Live client. This 
+ NWSChat Live client. This
  client interfaces with the XMPP server hosted at weather.im and open to
  public usage.</li>
  <li><a href="https://mesonet.agron.iastate.edu/projects/iembot/">IEMBot Project Page</a></li>

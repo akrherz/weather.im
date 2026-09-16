@@ -12,7 +12,7 @@ Application.AllChatMessageWindow = Ext.extend(Ext.Window, {
         width : 450
     },
     initComponent : function(){
-        
+
         this.buttons = [{
             text : 'Send Message',
             scope : this,
@@ -40,7 +40,7 @@ Application.AllChatMessageWindow = Ext.extend(Ext.Window, {
                 this.ownerCt.ownerCt.close();
             }
         }];
-        
+
         Application.AllChatMessageWindow.superclass.initComponent.apply(this,
                 arguments);
         this.buildItems(this.message);

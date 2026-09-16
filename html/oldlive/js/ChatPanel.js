@@ -9,7 +9,7 @@ Application.ChatPanel = Ext.extend(Ext.Panel, {
     barejid : null,
     handle : null,
     anonymous : null,
-    
+
     initComponent : function() {
         this.items = [
                 new Application.ChatGridPanel({
@@ -38,7 +38,7 @@ Application.ChatPanel = Ext.extend(Ext.Panel, {
                         type : self.chatType
                     }).c("gone", {xmlns : 'http://jabber.org/protocol/chatstates'}));
                 }
-                
+
             }
         };
         Ext.apply(this, Ext.apply(this.initialConfig, config));

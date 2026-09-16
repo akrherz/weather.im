@@ -65,12 +65,12 @@ Application.soundPrefs = new Ext.Window({
     buttons : [{
                 text : 'Save Sound Settings',
                 handler : function() {
-                    
+
                     Ext.getCmp("soundpanel").getStore().each(function(record){
                         eidx = record.get("id");
-                        //console.log("Saving sound "+ eidx +"| Enabled "+ record.get("enabled") 
+                        //console.log("Saving sound "+ eidx +"| Enabled "+ record.get("enabled")
                         //    +"| Sound "+ record.get('sound'));
-                        Application.setPreference('sound::'+eidx+'::enabled', 
+                        Application.setPreference('sound::'+eidx+'::enabled',
                                                     record.get("enabled")?'true':'false');
                         Application.setPreference('sound::'+eidx+'::sound', record.get('sound'));
                     });

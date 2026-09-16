@@ -1,9 +1,9 @@
 Ext.ns("Application");
 
-Application.LoginPanel = Ext.extend(Ext.Panel, { 
+Application.LoginPanel = Ext.extend(Ext.Panel, {
 
     initComponent : function() {
-        
+
         this.items = [{
                     html : '<img src="images/nws.png" width="100"/>',
                     height : 105,
@@ -50,13 +50,13 @@ Application.LoginPanel = Ext.extend(Ext.Panel, {
             },{
                 text : "Browser Save Login",
                 handler : function(b,e){
-                    Ext.get('submit').dom.click();    
+                    Ext.get('submit').dom.click();
                 }
             },{
                 text : "Login",
                 handler : Application.doLogin
             }]
-    
+
         },{
             xtype : 'panel',
             colspan : 2,

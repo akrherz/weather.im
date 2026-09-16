@@ -11,7 +11,7 @@ Application.buildAddBuddy = function(user, alias, group){
         items : [{
             xtype : 'textfield',
             fieldLabel : 'Weather.IM ID',
-            value : user        
+            value : user
         },{
             xtype : 'textfield',
             fieldLabel : 'Alias',
@@ -40,7 +40,7 @@ Application.buildAddBuddy = function(user, alias, group){
                 var stanza = $pres({to: user +"@"+ Application.XMPPHOST,
                     type: 'subscribe'});
                 Application.XMPPConn.send(stanza.tree());
-                
+
                 stanza = $iq({
                     type : 'set'
                 }).c('query', {

@@ -113,7 +113,7 @@ Application.Control = {
                     text : 'Show Debug Window',
                     handler : function() {
                         Ext.getCmp("debug").show();
-                        
+
                     }
                 },{
                     xtype : 'menuitem',

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * Need to be able to proxy some stuff for Live, so to avoid cross domain
  */

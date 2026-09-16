@@ -3,7 +3,7 @@ Ext.BLANK_IMAGE_URL = '/vendor/ext/resources/images/default/s.gif';
 Ext.onReady(function () {
 
     /*
-     * Cookie support, to effectively bookmark the open tabs 
+     * Cookie support, to effectively bookmark the open tabs
      */
     var cp = new Ext.state.CookieProvider({
         expires: new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 300))
@@ -11,7 +11,7 @@ Ext.onReady(function () {
     Ext.state.Manager.setProvider(cp);
 
     /*
-     * Save to cookie which tabs we are monitoring 
+     * Save to cookie which tabs we are monitoring
      */
     var saveConfig = function () {
         // Update Cookie?!
@@ -37,12 +37,12 @@ Ext.onReady(function () {
          */
         printStyle: false,
         /**
-         * @property {string} printTitle Page Title for printout. 
+         * @property {string} printTitle Page Title for printout.
          */
         printTitle: document.title,
         /**
          * Prints this element.
-         * 
+         *
          * @param config {object} (optional)
          */
         print: function (config) {
@@ -202,7 +202,7 @@ Ext.onReady(function () {
         }
     });
 
-    /* 
+    /*
      * Necessary to support changing the icon on the panel's tab
      */
     Ext.override(Ext.Panel, {
@@ -251,7 +251,7 @@ Ext.onReady(function () {
     }
 
     /*
-     * Generate a html version of the active grid 
+     * Generate a html version of the active grid
      */
     function grid2html() {
         var ds = Ext.getCmp('tabs').getActiveTab().getStore();

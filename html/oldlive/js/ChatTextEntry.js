@@ -8,11 +8,11 @@ Application.ChatTextEntry = Ext.extend(Ext.Panel, {
             border : false,
             chatstate : null,
             initComponent : function() {
-                
+
                 this.items = [{
                     xtype : 'textarea',
                     flex : 1,
-                    cls : 'message-entry-box',                
+                    cls : 'message-entry-box',
                     autoCreate : {
                         tag : 'textarea',
                         style : 'rows:10;cols:72;wrap:"hard";',
@@ -82,7 +82,7 @@ Application.ChatTextEntry = Ext.extend(Ext.Panel, {
                         }
                         var bgcolor = Application.getPreference('bgcolor', 'FFFFFF');
                         var fgcolor = Application.getPreference('fgcolor', '000000');
-                        
+
                         /* allchat */
                         if (this.ownerCt.ownerCt.chatType == "allchats"){
                             txt.emptyText = '';

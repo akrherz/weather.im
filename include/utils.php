@@ -1,10 +1,10 @@
 <?php
-/** 
- * Send a GET requst using cURL 
- * @param string $url to request 
- * @param array $get values to send 
- * @param array $options for cURL 
- * @return string 
+/**
+ * Send a GET requst using cURL
+ * @param string $url to request
+ * @param array $get values to send
+ * @param array $options for cURL
+ * @return string
  */
 function curl_get($url, array $get = array(), array $options = array())
 {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (isset($this)){
     $THISPAGE = array_key_exists('thispage', $this->vars)? $this->thispage : 'xxx-xxx';
 } else{
@@ -6,7 +6,7 @@ if (isset($this)){
 }
 $_pages = Array(
     "apps" => Array(
-        "title" => "Applications", 
+        "title" => "Applications",
         "subs" => Array(
             "map" => Array("title" => "Live Application", "url" => "/live/")
         ),
@@ -21,7 +21,7 @@ $_pages = Array(
         </button>
         <div class="collapse navbar-collapse" id="iem-navbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="iemHomeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-house"></i>
@@ -31,8 +31,8 @@ $_pages = Array(
         <li><a class="dropdown-item" href="https://weather.im">Weather.IM</a></li>
     </ul>
 </li>
-        
-<?php 
+
+<?php
 $ar = preg_split('/-/', $THISPAGE);
 function get_title($page){
     // Bootstrap 5: caret is handled by dropdown-toggle, icons by Bootstrap Icons
