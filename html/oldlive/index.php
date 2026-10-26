@@ -46,7 +46,7 @@ Due to spammers, you need to register for an account <a href="/create.php">here<
 
 <div id="loginmessage" class="x-hide-display">
 Welcome to <?php echo $appname; ?>, please log in with your user account.
-<br /><a href="/pwupdate.php">Forgot your password?</a>
+<br />
 <?php if(isset($_REQUEST["nomap"])){
   echo "<br />Switch to <a href='?'>Weather.IM Live with Map</a>";
 } else {
